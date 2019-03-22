@@ -316,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/ios-简单模仿随便走的AR功能-原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/ios-简单模仿随便走的AR功能一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzidaren">
@@ -336,7 +336,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/22/ios-简单模仿随便走的AR功能-原理/" class="post-title-link" itemprop="url">ios 简单模仿随便走的AR功能(原理)</a>
+                <a href="/2019/03/22/ios-简单模仿随便走的AR功能一/" class="post-title-link" itemprop="url">ios简单模仿随便走的AR功能一</a>
               
             
           </h1>
@@ -361,7 +361,319 @@
                 
               
 
-              <time title="创建时间：2019-03-22 21:21:43 / 修改时间：21:29:01" itemprop="dateCreated datePublished" datetime="2019-03-22T21:21:43+08:00">2019-03-22</time>
+              <time title="创建时间：2019-03-22 21:30:13 / 修改时间：21:38:14" itemprop="dateCreated datePublished" datetime="2019-03-22T21:30:13+08:00">2019-03-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ios/" itemprop="url" rel="index"><span itemprop="name">ios</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/03/22/ios-简单模仿随便走的AR功能一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/22/ios-简单模仿随便走的AR功能一/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/03/22/ios-简单模仿随便走的AR功能一/" class="leancloud_visitors" data-flag-title="ios简单模仿随便走的AR功能一">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于项目需求，需要实现类似随便走的AR功能，先来张随便走的截图，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4156120-6fceae1635ff79d0?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在这里插入图片描述"></p>
+<p>目前也有一些第三方的AR框架，所以不知道随便走到底是基于第三方的还是自己做的，但接下来我们会用简单的方式来实现AR功能。在这之前，你得先了解一些基本的常识，</p>
+<p>1、真北真北指的是地理的北极</p>
+<p>2、磁北 磁北指的是磁场北极</p>
+<p>3、方位角是从某点的指北方向线起，依顺时针方向到目标方向线之间的水平夹角</p>
+<p>我们知道在iOS系统框架中，有一个叫CoreLocation框架，专门是跟定位有关，通过这个框架，我们可以很方便的实现指南针的功能。我们可以看下CLLocationManager这个管理类，里面有经纬度、设备的真实方向等信息。我们看下CLHeading这个类，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4156120-627773a7a231b8e2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在这里插入图片描述"></p>
+<p>通过这个类，我们可以获取到设备跟磁北、真北的角度，x,y,z方向上的磁力值，我们先简单实现一个这样的功能，先画一个雷达图，在雷达图上有一根线指向磁北，</p>
+<p>1、我们先新建一个UIVew，在drawRect:(CGRect)rec函数里画一个黑色的圆圈，代码如下：</p>
+<pre><code>- (void)drawRect:(CGRect)rect{
+
+CGContextRef context = UIGraphicsGetCurrentContext();
+
+CGContextAddEllipseInRect(context, rect);
+
+[[UIColorcolorWithRed:0green:0blue:0alpha:0.6f]set];
+
+CGContextFillPath(context);
+
+}
+</code></pre><p>2、我们在黑色的圆圈上面画一圈圈的白色圆圈，画三次，代码如下：</p>
+<pre><code>NSArray*colors = @[
+
+[UIColorcolorWithRed:240.0/255.0green:240.0/255.0blue:240.0/255.0alpha:0.8],
+
+[UIColorcolorWithRed:240.0/255.0green:240.0/255.0blue:240.0/255.0alpha:0.8],
+
+[UIColorcolorWithRed:240.0/255.0green:240.0/255.0blue:240.0/255.0alpha:0.8]
+
+];
+
+NSInteger radius =self.frame.size.width/2/3, increment =self.frame.size.width/2/3;
+
+NSArray*angles = @[
+
+@{@&quot;start&quot;:@0,@&quot;end&quot;:@360},
+
+@{@&quot;start&quot;:@0,@&quot;end&quot;:@360},
+
+@{@&quot;start&quot;:@0,@&quot;end&quot;:@360},
+
+];
+
+for(inti =0; i &lt; colors.count; i++) {
+
+[colors[i]setStroke];
+
+UIBezierPath*path = [UIBezierPathbezierPathWithArcCenter:CGPointMake(self.frame.size.width/2,self.frame.size.height/2)
+
+radius:radius
+
+startAngle:DEGREES_TO_RADIANS([[angles[i]valueForKey:@&quot;start&quot;]integerValue])
+
+endAngle:DEGREES_TO_RADIANS([[angles[i]valueForKey:@&quot;end&quot;]integerValue])
+
+clockwise:YES];
+
+path.lineWidth=1;
+
+[pathstroke];
+
+if(i==colors.count-2)
+
+{
+
+increment=self.frame.size.width/2/3;
+
+}
+
+radius += increment;
+
+}
+</code></pre><p>效果如下图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4156120-0707fd7ef492d964?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在这里插入图片描述"></p>
+<p>3、然后我们画一根线，代码如下：</p>
+<pre><code>CGContextSetLineCap(context, kCGLineCapRound);
+
+CGContextSetLineWidth(context,1);//线宽
+
+CGContextSetAllowsAntialiasing(context,true);
+
+CGContextSetRGBStrokeColor(context,70.0/255.0,241.0/255.0,241.0/255.0,1.0);//线的颜色
+
+CGContextBeginPath(context);
+
+CGContextMoveToPoint(context,self.frame.size.width/2,0);
+
+CGContextAddLineToPoint(context,self.frame.size.width/2,self.frame.size.height/2);
+
+CGContextStrokePath(context);
+</code></pre><p>4、我们初始化CLLocationManager这个类，代码如下：</p>
+<pre><code>self.locationManager= [[CLLocationManageralloc]init];
+
+if([CLLocationManagerlocationServicesEnabled])
+
+{
+
+// Configure and start the LocationManager instance
+
+self.locationManager.delegate=self;
+
+self.locationManager.desiredAccuracy= kCLLocationAccuracyBest;
+
+self.locationManager.distanceFilter=100.0f;
+
+//            [self.locationManager startUpdatingLocation];
+
+//            [self.locationManager startUpdatingHeading];
+
+}
+</code></pre><p>5、在CLLocationManager回调函数里，</p>
+<pre><code>- (void)locationManager:(CLLocationManager*)manager
+
+    didUpdateToLocation:(CLLocation*)newLocation
+
+    fromLocation:(CLLocation*)oldLocation
+
+    {
+
+    }
+</code></pre><p>我们让这个雷达图跟着角度转，指向磁北或真北，代码如下：</p>
+<pre><code>floatdirection = newHeading.trueHeading;
+
+floatheadingAngle = -(direction*M_PI/180);
+
+_arcsView.transform= CGAffineTransformMakeRotation(angle);
+</code></pre><p>效果如下：<br><img src="https://upload-images.jianshu.io/upload_images/4156120-917dd0e39f76ffdf?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在这里插入图片描述"><br>下篇文章，我们会继续画雷达图，一个扇形区域，还有雷达图上的点<del>~</del><del>~</del><del>~</del>~~~</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/ios-简单模仿随便走的AR功能-原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangzidaren">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/tx2.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王大人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/22/ios-简单模仿随便走的AR功能-原理/" class="post-title-link" itemprop="url">ios简单模仿随便走的AR功能(原理)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-22 21:21:43 / 修改时间：21:30:48" itemprop="dateCreated datePublished" datetime="2019-03-22T21:21:43+08:00">2019-03-22</time>
             
 
             
@@ -411,7 +723,7 @@
 
           
           
-            <span id="/2019/03/22/ios-简单模仿随便走的AR功能-原理/" class="leancloud_visitors" data-flag-title="ios 简单模仿随便走的AR功能(原理)">
+            <span id="/2019/03/22/ios-简单模仿随便走的AR功能-原理/" class="leancloud_visitors" data-flag-title="ios简单模仿随便走的AR功能(原理)">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -992,7 +1304,7 @@ zTheta = atan2(gravityZ,sqrtf(gravityX*gravityX+gravityY*gravityY))/M_PI*180.0;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
