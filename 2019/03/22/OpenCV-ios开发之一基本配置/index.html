@@ -112,14 +112,14 @@
 
   <meta name="description" content="先简单介绍下OpenCV，OpenCV的全称是：Open Source Computer Vision Library。OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库，可以运行在Linux、Windows、Android和Mac OS操作系统上。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV-ios开发之一基本配置">
+<meta property="og:title" content="王大人">
 <meta property="og:url" content="http://yoursite.com/2019/03/22/OpenCV-ios开发之一基本配置/index.html">
 <meta property="og:site_name" content="王大人">
 <meta property="og:description" content="先简单介绍下OpenCV，OpenCV的全称是：Open Source Computer Vision Library。OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库，可以运行在Linux、Windows、Android和Mac OS操作系统上。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-22T05:56:05.207Z">
+<meta property="og:updated_time" content="2019-03-22T10:38:50.335Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV-ios开发之一基本配置">
+<meta name="twitter:title" content="王大人">
 <meta name="twitter:description" content="先简单介绍下OpenCV，OpenCV的全称是：Open Source Computer Vision Library。OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库，可以运行在Linux、Windows、Android和Mac OS操作系统上。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理">
 
 
@@ -137,7 +137,7 @@
   };
 </script>
 
-  <title>OpenCV-ios开发之一基本配置 | 王大人</title>
+  <title> | 王大人</title>
   
 
 
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OpenCV-ios开发之一基本配置
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -345,13 +345,9 @@
                 
               
 
-              <time title="创建时间：2019-03-22 13:50:46 / 修改时间：13:56:05" itemprop="dateCreated datePublished" datetime="2019-03-22T13:50:46+08:00">2019-03-22</time>
+              <time title="创建时间：2019-03-22 18:38:50" itemprop="dateCreated datePublished" datetime="2019-03-22T18:38:50+08:00">2019-03-22</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -377,7 +373,7 @@
 
           
           
-            <span id="/2019/03/22/OpenCV-ios开发之一基本配置/" class="leancloud_visitors" data-flag-title="OpenCV-ios开发之一基本配置">
+            <span id="/2019/03/22/OpenCV-ios开发之一基本配置/" class="leancloud_visitors" data-flag-title>
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -410,25 +406,53 @@
       
         <p>先简单介绍下OpenCV，OpenCV的全称是：Open Source Computer Vision Library。OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库，可以运行在Linux、Windows、Android和Mac OS操作系统上。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。说简单点，OpenCV可以实现人脸识别，检测，当然通过不断地训练，可以实现识别各种不同的物体。</p>
 <p>我们可以从官网下载OpenCV-ios版本，目前应该是3.0版本以上了，我目前用的还是opencv2framework，如下图：</p>
+<p><a href="https://img-blog.csdn.net/20170318141517632?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva3Vsb3ZleW91d2Vp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" target="_blank" rel="noopener">https://img-blog.csdn.net/20170318141517632?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva3Vsb3ZleW91d2Vp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center</a></p>
 <p>然后导入相关的头文件，这里我们用到了camera，如下图：</p>
+<p><a href="https://img-blog.csdn.net/20170318141725961?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva3Vsb3ZleW91d2Vp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" target="_blank" rel="noopener">https://img-blog.csdn.net/20170318141725961?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva3Vsb3ZleW91d2Vp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center</a></p>
 <p>注意要先导入opencv的头文件，在导入ios相关的系统头文件，不然会报错。这里我们创建一个CvVideoCamera，代码入下:</p>
-<p> self.videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imgView];<br>    self.videoCamera.delegate = self;<br>    self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;<br>    self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset1280x720;<br>    self.videoCamera.defaultAVCaptureVideoOrientation=AVCaptureVideoOrientationPortrait;<br>    self.videoCamera.defaultFPS = 30;<br>    self.videoCamera.grayscaleMode = NO;</p>
-<pre><code>[self.startButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
-</code></pre><p>然后通过一个代理方法- (void)processImage:(cv::Mat &amp;)image来获取视频流，代码如下：</p>
-<p>-(void) startPressed:(UIButton *)button<br>{</p>
-<pre><code>[self.videoCamera start];
-</code></pre><p>}</p>
-<ul>
-<li>(void)processImage:(cv::Mat &amp;)image<br>{<br>  cv::Mat   canny_output;//临时变量和目标图的定义<br>  cv::Mat midImage(self.imgView.bounds.size.height, self.imgView.bounds.size.width, CV_8UC1);<br>  //图像处理<br>  cvtColor(image,midImage,CV_BGR2GRAY,0);//将图像转化为灰度图<br>  //GaussianBlur(midImage,midImage,cv::Size(3,3),0,0); //高斯模糊<br>  blur(midImage, midImage,cv::Size(3,3));<br>  Canny(midImage, canny_output, 50,255 );//</li>
-</ul>
-<pre><code>//轮廓提取
-std::vector&lt;std::vector&lt;cv::Point&gt;&gt; contours;
-findContours(canny_output,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE);
-//轮廓拣选
+<pre><code>self.videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imgView];
+    self.videoCamera.delegate = self;
+    self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
+    self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset1280x720;
+    self.videoCamera.defaultAVCaptureVideoOrientation=AVCaptureVideoOrientationPortrait;
+    self.videoCamera.defaultFPS = 30;
+    self.videoCamera.grayscaleMode = NO;
 
-image.setTo(cv::Scalar(0,255,0,0),canny_output);
-self.imgView.image=MatToUIImage(image);
-</code></pre><p>}<br>这样就实现了检测物体轮廓的功能，效果如下：</p>
+
+    [self.startButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
+</code></pre><p>然后通过一个代理方法- (void)processImage:(cv::Mat &amp;)image来获取视频流，代码如下：</p>
+<pre><code>-(void) startPressed:(UIButton *)button
+{
+
+
+    [self.videoCamera start];
+
+
+}
+
+- (void)processImage:(cv::Mat &amp;)image
+{
+    cv::Mat   canny_output;//临时变量和目标图的定义
+    cv::Mat midImage(self.imgView.bounds.size.height, self.imgView.bounds.size.width, CV_8UC1);
+    //图像处理
+    cvtColor(image,midImage,CV_BGR2GRAY,0);//将图像转化为灰度图
+    //GaussianBlur(midImage,midImage,cv::Size(3,3),0,0); //高斯模糊
+    blur(midImage, midImage,cv::Size(3,3));
+    Canny(midImage, canny_output, 50,255 );//
+
+
+    //轮廓提取
+    std::vector&lt;std::vector&lt;cv::Point&gt;&gt; contours;
+    findContours(canny_output,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE);
+    //轮廓拣选
+
+    image.setTo(cv::Scalar(0,255,0,0),canny_output);
+    self.imgView.image=MatToUIImage(image);
+
+
+}
+</code></pre><p>这样就实现了检测物体轮廓的功能，效果如下：</p>
+<p><a href="https://img-blog.csdn.net/20170318142549137?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva3Vsb3ZleW91d2Vp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" target="_blank" rel="noopener">https://img-blog.csdn.net/20170318142549137?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva3Vsb3ZleW91d2Vp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center</a></p>
 
       
     </div>
