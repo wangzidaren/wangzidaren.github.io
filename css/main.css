@@ -1843,7 +1843,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #37eb5c;
+  background: #041fed;
 }
 .links-of-blogroll {
   margin-top: 10px;
@@ -2842,11 +2842,6 @@ ul.breadcrumb li+li:last-child {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.content {
-  border-radius: 20px;
-  padding: 30px 60px 30px 60px;
-  background: rgba(255,255,255,0.8) none repeat scroll !important;
 }
 #heart {
   animation: heartAnimate 1.33s ease-in-out infinite;
