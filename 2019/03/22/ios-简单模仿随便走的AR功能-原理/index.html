@@ -110,24 +110,27 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="先上个最终的效果动态图，  12~~ 1、首先我们要自定义一个相机界面，可以用AVCaptureSession来自定义，不需要其他按钮，只有一个预览的界面； 2、我们要画一个简单的雷达图，可以用CGContextRef来简单实现，雷达图用来显示你跟你附近的用户（物体）的距离，通过跟实际物体的经纬度来算两点之间的距离，通过一定的比例来映射到雷达图上，两点之间的距离计算公式如下： //两点的经纬度计算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/03/22/hello-world/index.html">
+<meta property="og:title" content="ios 简单模仿随便走的AR功能(原理)">
+<meta property="og:url" content="http://yoursite.com/2019/03/22/ios-简单模仿随便走的AR功能-原理/index.html">
 <meta property="og:site_name" content="王大人">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="先上个最终的效果动态图，  12~~ 1、首先我们要自定义一个相机界面，可以用AVCaptureSession来自定义，不需要其他按钮，只有一个预览的界面； 2、我们要画一个简单的雷达图，可以用CGContextRef来简单实现，雷达图用来显示你跟你附近的用户（物体）的距离，通过跟实际物体的经纬度来算两点之间的距离，通过一定的比例来映射到雷达图上，两点之间的距离计算公式如下： //两点的经纬度计算">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-22T13:13:45.985Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4156120-0fdde45cfbbe9cb5?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4156120-a932b21446c353fa.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-03-22T13:29:01.718Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="ios 简单模仿随便走的AR功能(原理)">
+<meta name="twitter:description" content="先上个最终的效果动态图，  12~~ 1、首先我们要自定义一个相机界面，可以用AVCaptureSession来自定义，不需要其他按钮，只有一个预览的界面； 2、我们要画一个简单的雷达图，可以用CGContextRef来简单实现，雷达图用来显示你跟你附近的用户（物体）的距离，通过跟实际物体的经纬度来算两点之间的距离，通过一定的比例来映射到雷达图上，两点之间的距离计算公式如下： //两点的经纬度计算">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4156120-0fdde45cfbbe9cb5?imageMogr2/auto-orient/strip">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/22/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/22/ios-简单模仿随便走的AR功能-原理/">
 
 
 
@@ -137,7 +140,7 @@
   };
 </script>
 
-  <title>Hello World | 王大人</title>
+  <title>ios 简单模仿随便走的AR功能(原理) | 王大人</title>
   
 
 
@@ -319,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/ios-简单模仿随便走的AR功能-原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzidaren">
@@ -336,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">ios 简单模仿随便走的AR功能(原理)
 
               
             
@@ -362,9 +365,13 @@
                 
               
 
-              <time title="创建时间：2019-03-22 21:13:45" itemprop="dateCreated datePublished" datetime="2019-03-22T21:13:45+08:00">2019-03-22</time>
+              <time title="创建时间：2019-03-22 21:21:43 / 修改时间：21:29:01" itemprop="dateCreated datePublished" datetime="2019-03-22T21:21:43+08:00">2019-03-22</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -380,7 +387,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/杂类/" itemprop="url" rel="index"><span itemprop="name">杂类</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ios/" itemprop="url" rel="index"><span itemprop="name">ios</span></a></span>
 
                 
                 
@@ -399,8 +406,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/22/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/22/hello-world/" itemprop="commentCount"></span>
+                <a href="/2019/03/22/ios-简单模仿随便走的AR功能-原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/22/ios-简单模仿随便走的AR功能-原理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,7 +415,7 @@
 
           
           
-            <span id="/2019/03/22/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+            <span id="/2019/03/22/ios-简单模仿随便走的AR功能-原理/" class="leancloud_visitors" data-flag-title="ios 简单模仿随便走的AR功能(原理)">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -439,16 +446,95 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>先上个最终的效果动态图，</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4156120-0fdde45cfbbe9cb5?imageMogr2/auto-orient/strip" alt="在这里插入图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~</span><br></pre></td></tr></table></figure>
+<p>1、首先我们要自定义一个相机界面，可以用AVCaptureSession来自定义，不需要其他按钮，只有一个预览的界面；</p>
+<p>2、我们要画一个简单的雷达图，可以用CGContextRef来简单实现，雷达图用来显示你跟你附近的用户（物体）的距离，通过跟实际物体的经纬度来算两点之间的距离，通过一定的比例来映射到雷达图上，两点之间的距离计算公式如下：</p>
+<p>//两点的经纬度计算距离</p>
+<pre><code>-(float)DistanceFromCoordinates:(CLLocationCoordinate2D) myDotother:(CLLocationCoordinate2D)otherDot
+{
+doubleEARTH_RADIUS =6378137.0;
+doubleradLat1= (myDot.latitude* M_PI /180.0);
+doubleradLat2= (otherDot.latitude* M_PI /180.0);
+doublea = radLat1- radLat2;
+doubleb = (myDot.longitude- otherDot.longitude) * M_PI /180.0;
+doubles =22* asin(sqrt(pow(sin(a /2),2)
++ cos(radLat1) * cos(radLat2)
+* pow(sin(b /2),2)));
+s =s* EARTH_RADIUS;
+s = round(s*10000) /10000;
+returns;
+}
+</code></pre><p>要算物体在雷达图上的显示位置，根据三角函数，sinA=对边/斜边，cosA=邻边/斜边,斜边我们已经有了，就是两点之间的距离，那么我们就需要知道一个角度，才能算出一条边，通过这条边跟半径的加减，就可以算出这个物体在雷达图上的位置。所以我们先要算两点的方位角，看下面的一张图：</p>
+<p>这个维基上的一张方位角的解释图，我们可以同通过tan2函数来计算，公式如下：</p>
+<pre><code>- (float)getHeadingForDirectionFromCoordinate:(CLLocationCoordinate2D)fromLoctoCoordinate:(CLLocationCoordinate2D)toLoc
+{
+floatfLat = DegreesToRadians(fromLoc.latitude);
+floatfLng = DegreesToRadians(fromLoc.longitude);
+floattLat = DegreesToRadians(toLoc.latitude);
+floattLng = DegreesToRadians(toLoc.longitude);
+floatdegree = RadiansToDegrees(atan2(sin(tLng-fLng)*cos(tLat), cos(fLat)*sin(tLat)-sin(fLat)*cos(tLat)*cos(tLng-fLng)));
+if(degree &gt;=0) {
+returndegree;
+}else{
+return(360+degree);
+}
+}
+</code></pre><p>3、要实现雷达图跟随手机旋转而转动，这里我们要用到指南针的原理，通过CLLocationManager管理类，里面有个CLHeading类，我们可以实现指南针，看这个类的结构：</p>
+<p>里面有真北，磁北，还有磁力值在x,y,z三轴上的磁力值，不过当我用到这三个值的时候，发现有问题，在前后移动手机的时候，发现这个值变化有停顿，如果用这个值来实现移动会导致不流畅，所以我又用了陀螺仪数据，通过CMMotionManager这个管理类来获取手机移动摆动的角度，用来计算手机前后移动的时候，物体在手机界面上下的位置。</p>
+<pre><code>-(void) startMotion
+{
+
+if(![_mgrisDeviceMotionActive] &amp;&amp; [_mgrisDeviceMotionAvailable])
+
+{
+
+//设置采样间隔
+
+_mgr.deviceMotionUpdateInterval=0.1;
+
+NSOperationQueue*queue = [[NSOperationQueuealloc]init];
+
+[_mgrstartDeviceMotionUpdatesToQueue:queue
+
+withHandler:^(CMDeviceMotion* _Nullable motion,
+
+NSError* _Nullable error) {
+
+doublegravityX = motion.gravity.x;
+
+doublegravityY = motion.gravity.y;
+
+doublegravityZ = motion.gravity.z;
+
+if(gravityY&lt;=0&amp;&amp; gravityY&gt;=-1)
+
+{
+
+//获取手机的倾斜角度(zTheta是手机与水平面的夹角， xyTheta是手机绕自身旋转的角度)：
+
+zTheta = atan2(gravityZ,sqrtf(gravityX*gravityX+gravityY*gravityY))/M_PI*180.0;
+
+}
+
+[[NSOperationQueuemainQueue]addOperationWithBlock:^{
+
+[selfupdataPoint];
+
+}];
+
+//[self performSelectorOnMainThread:@selector(updataPoint) withObject:nil waitUntilDone:NO];
+
+}];
+
+}
+
+}
+</code></pre><p>4、通过计算角度区间来显示手机上的物体显示还隐藏，也就是说在雷达图上的点进入扇形可见的区域就显示出物体并且移动，超出就隐藏起来。还有一点，就是要算碰撞检测的手机上物体与物体如果太多，就不能叠在一起，通过错位错开来，可以通过CGRectIntersectsRect来写个算法检测两个矩形是否碰到了，</p>
+<p>简单说了下我实现的原理，当然实际做的时候会遇到很多问题，，，，</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4156120-a932b21446c353fa.gif?imageMogr2/auto-orient/strip" alt="在这里插入图片描述"></p>
+<p><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del></p>
 
       
     </div>
@@ -503,8 +589,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/22/OpenCV-ios开发之一基本配置/" rel="next" title="OpenCV-ios开发之一基本配置">
-                <i class="fa fa-chevron-left"></i> OpenCV-ios开发之一基本配置
+              <a href="/2019/03/22/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -512,10 +598,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/22/ios-简单模仿随便走的AR功能-原理/" rel="prev" title="ios 简单模仿随便走的AR功能(原理)">
-                ios 简单模仿随便走的AR功能(原理) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,17 +645,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -655,23 +728,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
